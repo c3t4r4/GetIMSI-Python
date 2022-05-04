@@ -1,0 +1,13 @@
+[Unit]
+Description=Python Send IMSI
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 NewbindFile.py
+WorkingDirectory=/home/erb/Documentos/GetIMSI-Python
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
