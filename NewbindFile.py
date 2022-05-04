@@ -12,8 +12,16 @@ from watchdog.events import PatternMatchingEventHandler
 oldFileContent = ""
 newLineContent = []
 printLog = True
-folderFiles = "./files/"
-URI = "localhost"
+localHost = False
+
+if localHost:
+    folderFiles = "./files/"
+    URI = "localhost"
+else:
+    folderFiles = "/home/"
+    URI = "192.168.2.169"
+
+
 URLAPI = f"http://{URI}:8000/api/datastore"
 
 class imsi_Data:
@@ -80,8 +88,11 @@ def sendJsonObject(imsiObject):
 
     jsonData = imsiObject.toJson()
     printlog(jsonData)
-    response = requests.request("POST", URLAPI, data=jsonData, headers=header)
-    print(f"        Status do Envio: {str(response.status_code)} \n")
+    try:
+        response = requests.request("POST", URLAPI, data=jsonData, headers=header)
+        print(f"        Status do Envio: {str(response.status_code)} \n")
+    except:
+        print(f"        Status do Envio: 404 -  Erro ao Enviar \n")
 
 class MyHandler(PatternMatchingEventHandler):
     patterns = ["*.txt"]
