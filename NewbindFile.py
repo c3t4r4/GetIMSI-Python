@@ -19,10 +19,10 @@ if localHost:
     URI = "localhost"
 else:
     folderFiles = "/home/"
-    URI = "192.168.2.169"
+    URI = "152.67.33.97"
 
 
-URLAPI = f"http://{URI}:8000/api/datastore"
+URLAPI = f"http://{URI}/api/datastore"
 
 class imsi_Data:
     def __init__(self, type, datetimsi, operID, timsi, imsi, dateimsi, status):
