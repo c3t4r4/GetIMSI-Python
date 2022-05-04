@@ -13,7 +13,8 @@ oldFileContent = ""
 newLineContent = []
 printLog = True
 folderFiles = "./files/"
-URLAPI = "http://localhost:8000/api/datastore"
+URI = "localhost"
+URLAPI = f"http://{URI}:8000/api/datastore"
 
 class imsi_Data:
     def __init__(self, type, datetimsi, operID, timsi, imsi, dateimsi, status):
@@ -107,6 +108,7 @@ class MyHandler(PatternMatchingEventHandler):
                             
                 print(f"Arquivo Finalizado!\n")
                 print(f"MicroServiço = Escuta IMSI File\n")
+                printlog(f"Run on: {URLAPI}\n")
 
     def on_modified(self, event):
         self.process(event)
@@ -117,6 +119,7 @@ class MyHandler(PatternMatchingEventHandler):
 if __name__ == '__main__':
     dttmpstatus = ""
     print("MicroServiço = Escuta IMSI File")
+    printlog(f"Run on: {URLAPI}\n")
     
     args = folderFiles+"epc_imsi.txt"
 
