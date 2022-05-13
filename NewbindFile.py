@@ -24,6 +24,8 @@ else:
 
 URLAPI = f"http://{URI}/api/datastore"
 
+#TIMSI;2022-05-13 10:32:32;37;0xcb57c797;724102301049129;2022-05-13 10:32:32;#1 
+
 class imsi_Data:
     def __init__(self, type, datetimsi, operID, timsi, imsi, dateimsi, status):
         self.type = type
